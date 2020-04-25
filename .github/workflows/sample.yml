@@ -21,10 +21,10 @@ jobs:
 
   run-github-action:
     runs-on: ubuntu-latest
-    stpes:
+    steps:
       - name: Simple JS Action
         id: greet
-        uses: actions/javascript-action@v1
+        uses: actions/hello-world-javascript-action@v1
         with: 
           who-to-greet: Surendra
       - name: Logs TimeStamp of who-to-greet
