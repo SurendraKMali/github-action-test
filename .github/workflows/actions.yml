@@ -1,17 +1,6 @@
 name: Actions Worflow
 
-on:
-  push:
-    branches:
-      - master
-      - "feature/*" # matches feature/featA, feature/featB, doesn't match feature/feat/a
-      - "feature/**"
-      - "!feature/featC"
-    tags:
-      - v1.*
-    paths:
-      - "**.js"
-      - "!filename.js"
+on: [push]
 
 jobs:
   run-github-actions:
