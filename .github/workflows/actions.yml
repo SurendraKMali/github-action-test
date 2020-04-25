@@ -12,6 +12,7 @@ jobs:
         run: |
           pwd
           ls -a
+          echo " ********************************************** List of actions **********************************************"
           echo $GITHUB_SHA 
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
