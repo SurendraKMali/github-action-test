@@ -35,7 +35,7 @@ jobs:
           pwd
           ls -a
           git clone git@github:$GITHUB_REPOSITORY
-          git checkout $GITHUB_SHA
+          git checkout develop
           sudo apt-get install tree
           echo " ********************************************** tree **********************************************"
           tree
