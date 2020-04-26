@@ -1,4 +1,4 @@
-name: Epi POC
+name: Console_trigger
 
 on:
   # Trigger the workflow on push or pull request,
@@ -20,3 +20,18 @@ on:
     types: # This configuration does not affect the page_build event above
       - created
       - published
+jobs:
+  Slack_ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files After Checkout
+        run: |
+          echo " ********************************************** List of actions **********************************************"
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          pwd
+          ls -a
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"ConSole_Deploy triggered"}' https://hooks.slack.com/services/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          sudo apt-get install tree
+          tree
