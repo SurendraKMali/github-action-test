@@ -34,10 +34,11 @@ jobs:
           echo "${{ github.token }}"
           pwd
           ls -a
-          git clone git@github:$GITHUB_REPOSITORY
-          git checkout develop
+          #git clone git@github:$GITHUB_REPOSITORY
+          #git checkout develop
           sudo apt-get install tree
           echo " ********************************************** tree **********************************************"
+          cd ../../../
           tree
       - name: Slack_ping
         run: |
