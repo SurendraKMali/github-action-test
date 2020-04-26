@@ -43,7 +43,7 @@ jobs:
       - name: Slack_ping
         run: |
           echo " ********************************************** Curling **********************************************"
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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 
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered!"}' https://hooks.slack.com/services/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
       #- name: curl
       #  uses: wei/curl@v1
       #  with:
