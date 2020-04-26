@@ -34,9 +34,16 @@ jobs:
           echo "${{ github.token }}"
           pwd
           ls -a
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered"}' https://hooks.slack.com/services/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
+          git clone git@github:$GITHUB_REPOSITORY
+          git checkout $GITHUB_SHA
           sudo apt-get install tree
           echo " ********************************************** tree **********************************************"
           tree
+    steps:
+      - name: Slack_ping
+        run: |
+          echo " ********************************************** Curling **********************************************"
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered"}' https://hooks.slack.com/services/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
+          
       #- name: Moving build to artifacts directory
       #  run: ./scripts/moveFiles.sh
