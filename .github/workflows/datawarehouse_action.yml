@@ -45,7 +45,18 @@ jobs:
           echo " ********************************************** Curling **********************************************"
           #curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered"}' https://hooks.slack.com/services/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
 
-      - name: curl
-        uses: wei/curl@v1
+      #- name: curl
+      #  uses: wei/curl@v1
+      #  with:
+      #    args: -X POST -H "Content-type: application/json" --data "{"text":"DataWareHouse_Deploy triggered"}" https://hooks.slack.com/services/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
+
+
+      - name: Slack notification
+        env:
+          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+          SLACK_USERNAME: TEst_bot # Optional. (defaults to webhook app)
+          SLACK_CHANNEL: epi_poc # Optional. (defaults to webhook)
+          SLACK_AVATAR: repository # Optional. can be (repository, sender, an URL) (defaults to webhook app avatar)
+        uses: Ilshidur/action-slack@master
         with:
-          args: -X POST -H "Content-type: application/json" --data "{"text":"DataWareHouse_Deploy triggered"}" https://hooks.slack.com/services/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
+          args: 'DataWareHouse_Deploy triggered.'
