@@ -33,11 +33,9 @@ jobs:
           echo "${{ github.token }}"
           pwd
           ls -a
-          #curl -X POST -H 'Content-type: application/json' --data '{"text":"ConSole_Deploy triggered"}' https://hooks.slack.com/services/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          sudo apt-get install tree
-          tree
       - name: Slack_ping
         run: |
           echo " ********************************************** ConSole_Deploy triggered **********************************************"
-          
+
 
 
