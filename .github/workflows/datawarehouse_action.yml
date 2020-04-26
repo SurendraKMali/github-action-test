@@ -38,7 +38,7 @@ jobs:
           #git checkout develop
           sudo apt-get install tree
           echo " ********************************************** tree **********************************************"
-          cd ../../../
+          cd ../../
           tree
       - name: Slack_ping
         run: |
