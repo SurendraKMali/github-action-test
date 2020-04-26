@@ -43,11 +43,15 @@ jobs:
       - name: Slack_ping
         run: |
           echo " ********************************************** Curling **********************************************"
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered!"}' https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered!"}' https://hooks.slack.com/services/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
+
+
+
+
       #- name: curl
       #  uses: wei/curl@v1
       #  with:
-      #    args: -X POST -H "Content-type: application/json" --data "{"text":"DataWareHouse_Deploy triggered"}" https://hooks.slack.com/services/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
+      #    args: -X POST -H "Content-type: application/json" --data "{"text":"DataWareHouse_Deploy triggered"}" https://hooks.slack.com/services/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
 
 
       # - name: Slack notification
