@@ -39,3 +39,8 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data '{"text":"WeGooooo WeGoooooo!!!"}' https://hooks.slack.com/services/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
           sudo apt-get install tree
           tree
+
+        #run : ./.github/actions/datawarehouse_slack.sh
+          
+        #- name: Moving build to artifacts directory
+        #  run: ./scripts/moveFiles.sh
