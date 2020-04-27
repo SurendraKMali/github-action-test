@@ -44,8 +44,10 @@ jobs:
       #     github-token: ${{ github.token }}
       #     script: |
       #       return context.payload.ref.replace(/\/refs\/tags\//, '');
-      - name: Echo
+      - name: get tags
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
         #run: echo ${{ steps.tag.outputs.result }}
+      - name: echo output tag
+        run: ${{ steps.get_version.outputs.VERSION }}
 
 
