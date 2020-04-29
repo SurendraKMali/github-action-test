@@ -1,0 +1,64 @@
+name: datawarehouse_trigger
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+      - develop
+    tags:
+      - datawarehouse
+
+  # Also trigger on page_build, as well as release created events
+  page_build:
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
+      - published
+
+jobs:
+  Slack_ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files After Checkout
+        run: |
+          echo " ********************************************** List of actions **********************************************"
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          pwd
+          ls -a
+          #git clone git@github:$GITHUB_REPOSITORY
+          #git checkout develop
+          sudo apt-get install tree
+          echo " ********************************************** tree **********************************************"
+          cd ../../
+          tree
+      - name: Slack_ping
+        run: |
+          echo " ********************************************** DataWareHouse_Deploy triggered **********************************************"
+          #curl -X POST -H 'Content-type: application/json' --data '{"text":"DataWareHouse_Deploy triggered!"}' https://hooks.slack.com/services/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
+
+
+
+      #- name: curl
+      #  uses: wei/curl@v1
+      #  with:
+      #    args: -X POST -H "Content-type: application/json" --data "{"text":"DataWareHouse_Deploy triggered"}" https://hooks.slack.com/services/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
+
+
+      # - name: Slack notification
+      #   env:
+      #     SLACK_WEBHOOK: https://hooks.slack.com/services/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
+      #     SLACK_USERNAME: TEst_bot # Optional. (defaults to webhook app)
+      #     SLACK_CHANNEL: epi_poc # Optional. (defaults to webhook)
+      #     SLACK_AVATAR: repository # Optional. can be (repository, sender, an URL) (defaults to webhook app avatar)
+      #   uses: Ilshidur/action-slack@master
+      #   with:
+      #     args: 'DataWareHouse_Deploy triggered.'

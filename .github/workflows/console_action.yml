@@ -1,0 +1,54 @@
+name: Console_trigger
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+      - develop
+    tags:
+      - console
+
+  # Also trigger on page_build, as well as release created events
+  page_build:
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
+      - published
+jobs:
+  Slack_ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files After Checkout
+        run: |
+          echo " ********************************************** List of actions **********************************************"
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          pwd
+          ls -a
+      - name: Slack_ping
+        run: |
+          echo " ********************************************** ConSole_Deploy triggered **********************************************"
+
+      # - name: Extract tag name
+      #   id: tag
+      #   uses: actions/github-script@0.2.0
+      #   with:
+      #     github-token: ${{ github.token }}
+      #     script: |
+      #       return context.payload.ref.replace(/\/refs\/tags\//, '');
+      - name: get tags
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        #run: echo ${{ steps.tag.outputs.result }}
+      - name: echo output tag
+        run: ${{ steps.get_version.outputs.VERSION }}
+
+
