@@ -23,8 +23,8 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this Release
-            - First Change
-            - Second Change
+            - Epi POC
+            - Auto push note ;)
           draft: false
           prerelease: false
       - name: Echoing
