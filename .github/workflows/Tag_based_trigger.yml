@@ -13,7 +13,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
-          SLACK_MESSAGE: "Test Develop failed"
+          SLACK_MESSAGE: "Buold Triggered"
       - name: slack Files After Checkout
         run: |
           pwd
