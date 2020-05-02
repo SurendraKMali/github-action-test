@@ -4,15 +4,7 @@ on:
     types: [build]
 
   pull_request:
-    types:
-      # Check title when opened.
-      - opened
-      # Check title when new commits are pushed.
-      # Required to use as a status check.
-      - synchronize
-      - closed
-      - reopened
-
+    types: [closed, assigned, opened, reopened]
 jobs:
   slack-steps:
     runs-on: ubuntu-latest
