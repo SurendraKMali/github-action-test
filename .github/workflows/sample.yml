@@ -1,22 +1,22 @@
   
-name: Shell Commands
+# name: Shell Commands
 
-on: [pull_request]
+# on: [pull_request]
 
-jobs:
-  run-shell-command:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo a string
-        run: echo "Hello World"
-      - name: multiline script
-        run: |
-          node -v
-          npm -v
-      - name: Python Commands
-        run: |
-          import platform
-          print(platform.processor())
-        shell: python
+# jobs:
+#   run-shell-command:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: echo a string
+#         run: echo "Hello World"
+#       - name: multiline script
+#         run: |
+#           node -v
+#           npm -v
+#       - name: Python Commands
+#         run: |
+#           import platform
+#           print(platform.processor())
+#         shell: python
 
             
