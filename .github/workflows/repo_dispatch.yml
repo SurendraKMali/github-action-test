@@ -16,3 +16,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_MESSAGE: "Hello slack"
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -a
