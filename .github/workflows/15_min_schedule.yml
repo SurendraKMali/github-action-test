@@ -2,7 +2,8 @@ name: 15_min_schedule
 
 on:
   schedule:
-  - cron: '5 * * * *'
+    - cron: '0/5 * * * *'
+    - cron: '0/6 * * * *'
 
 jobs:
   triggers:
