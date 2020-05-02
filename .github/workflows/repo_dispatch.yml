@@ -3,7 +3,9 @@ on:
   repository_dispatch:
    types: [build]
    
-
+  push:
+    branches:
+      - feature
   #pull_request:
   #  types: [closed, assigned, opened, reopened]
 
@@ -15,7 +17,8 @@ jobs:
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
+          # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
+          SLACK_MESSAGE: "Test Develop failed"
       - name: slack Files After Checkout
         run: |
           pwd
