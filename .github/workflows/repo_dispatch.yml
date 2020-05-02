@@ -2,7 +2,17 @@ name: API_repo_dispatch
 on:
   repository_dispatch:
    types: [build]
-   
+  
+  push:
+    branches:
+      - feature
+
+    # tags:
+    #   - v1.*
+
+    # path:
+    #   - '**/action/*.py'
+
 
   #pull_request:
   #  types: [closed, assigned, opened, reopened]
