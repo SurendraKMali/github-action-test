@@ -50,5 +50,3 @@ jobs:
         #run: echo ${{ steps.tag.outputs.result }}
       - name: echo output tag
         run: ${{ steps.get_version.outputs.VERSION }}
-
-
