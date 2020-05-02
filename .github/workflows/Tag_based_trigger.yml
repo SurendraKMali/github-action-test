@@ -26,11 +26,12 @@ jobs:
         run: |
           pwd
           ls -a
-          echo " ********************************************** List of actions **********************************************"
+          echo " ********************************************** github.event.label.name **********************************************"
           echo $GITHUB_SHA 
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-          echo "${{ github.event.client_payload.SLK_MSG }}"
+          #echo "${{ github.event.client_payload.SLK_MSG }}"
+          echo "${{ github.event.label.name }}"
 
   if_datawarehouse:
     runs-on: ubuntu-latest
