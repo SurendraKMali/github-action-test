@@ -1,18 +1,21 @@
-name: Actions Worflow
+name: Guided_Scheduled
 
-on: [push]
+on:
+  schedule:
+    - cron: '0/5 * * * *'
+    - cron: '0/6 * * * *'
+  # push:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: payload
-        run: echo ${{ github.event.client_payload.env }}
       - name: List Files
         run: |
           pwd
           ls -a
-          echo " ********************************************** List of actions **********************************************"
           echo $GITHUB_SHA 
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
@@ -29,6 +32,6 @@ jobs:
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
-          who-to-greet: Surendra
+          who-to-greet: John
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"

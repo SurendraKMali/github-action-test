@@ -1,0 +1,25 @@
+name: repo_dispatch
+on:
+  #repository_dispatch:
+  #  types: [build]
+  schedule:
+    - cron: "0/5 * * * *"
+    - cron: "0/6 * * * *"
+
+  #pull_request:
+  #  types: [closed, assigned, opened, reopened]
+
+jobs:
+  slack-steps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send a slack message
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Hello slack"
+      - name: slack Files After Checkout
+        run: |
+          pwd
+          ls -a
+          echo " ********************************************** List of actions **********************************************"
