@@ -6,9 +6,9 @@ on:
     - cron: "0/5 * * * *"
     - cron: "0/6 * * * *"
 
-  pull_request:
-    types: [closed, assigned, opened, reopened]
-    
+  #pull_request:
+  #  types: [closed, assigned, opened, reopened]
+
 jobs:
   slack-steps:
     runs-on: ubuntu-latest
