@@ -1,0 +1,55 @@
+name: Tag_based_trigger
+on:
+
+  pull_request:
+   types: [closed, assigned, opened, reopened]
+
+jobs:
+  slack-steps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send a slack message
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
+          SLACK_MESSAGE: "Buold Triggered"
+      - name: slack Files After Checkout
+        run: |
+          pwd
+          ls -a
+          echo " ********************************************** List of actions **********************************************"
+  payload:
+    runs-on: ubuntu-latest
+    steps:  
+      - name: slack API Msg
+        run: |
+          pwd
+          ls -a
+          echo " ********************************************** List of actions **********************************************"
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.event.client_payload.SLK_MSG }}"
+
+  lable_ckeck:
+    runs-on: ubuntu-latest
+    steps:  
+      - name: if_datawarehouse
+        if: github.event.label.name == 'datawarehouse'
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+          # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
+          SLACK_MESSAGE: "datawarehouse Tag Detectact"
+
+      - name: if_console
+        if: github.event.label.name == 'console'
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
+          SLACK_MESSAGE: "Console Tag Detectact"
+
+
+        
