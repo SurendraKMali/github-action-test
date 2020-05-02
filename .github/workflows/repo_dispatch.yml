@@ -1,7 +1,7 @@
 name: API_repo_dispatch
 on:
-  repository_dispatch:
-   types: [Postman]
+  # repository_dispatch:
+  #  types: [Postman]
   
   push:
     branches:
