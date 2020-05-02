@@ -32,7 +32,7 @@ jobs:
           echo $GITHUB_WORKSPACE
           echo "${{ github.event.client_payload.SLK_MSG }}"
 
-  lable_ckeck:
+  if_datawarehouse:
     runs-on: ubuntu-latest
     steps:  
       - name: if_datawarehouse
@@ -43,6 +43,9 @@ jobs:
           # SLACK_MESSAGE: "${{ github.event.client_payload.SLK_MSG }}"
           SLACK_MESSAGE: "datawarehouse Tag Detectact"
 
+  if_console:
+    runs-on: ubuntu-latest
+    steps: 
       - name: if_console
         if: github.event.label.name == 'console'
         uses: docker://technosophos/slack-notify
