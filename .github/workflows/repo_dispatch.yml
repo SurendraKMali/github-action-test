@@ -1,7 +1,7 @@
 name: repo_dispatch
 on: 
   repository_dispatch:
-    types: build
+    types: [build]
 
   pull_request:
     types:
@@ -14,7 +14,7 @@ on:
       - reopened
 
 jobs:
-  docker-steps:
+  slack-steps:
     runs-on: ubuntu-latest
     steps:
 
