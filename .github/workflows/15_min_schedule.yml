@@ -1,4 +1,4 @@
-name: 15_min_schedule
+name: fifteen_min_schedule
 
 on:
   schedule:
