@@ -5,7 +5,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix: 
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@master
     - name: Setup Python  
@@ -20,13 +20,7 @@ jobs:
     - name: Upload coverage to Codecov  
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true
-    - name : Django Cov Test
-      uses: actions/python-django-coverage-gitHub-action@v1
-      with:
-        django-app: 'sample_app'
-        minimum-coverage: '86'
