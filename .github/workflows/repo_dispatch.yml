@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - feature
-      - develop
+      - develops
   #pull_request:
   #  types: [closed, assigned, opened, reopened]
 
@@ -37,3 +37,4 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           echo "${{ github.event.client_payload.SLK_MSG }}"
+          

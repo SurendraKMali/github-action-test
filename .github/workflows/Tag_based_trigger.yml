@@ -32,12 +32,16 @@ jobs:
           echo $GITHUB_WORKSPACE
           #echo "${{ github.event.client_payload.SLK_MSG }}"
           echo "${{ github.event.label.name }}"
+          echo "${{github.event.pull_request.labels.*.name }}"
+          echo "${{github.event.pull_request.labels }}"
+          # if: contains(github.event.pull_request.labels.*.name, 'some-defined-label')
 
   if_datawarehouse:
     runs-on: ubuntu-latest
     steps:  
       - name: if_datawarehouse
-        if: github.event.label.name == 'datawarehouse'
+        # if: github.event.label.name == 'datawarehouse'
+        if: contains(github.event.pull_request.labels.*.name, 'datawarehouse')
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
@@ -48,7 +52,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: if_console
-        if: github.event.label.name == 'console'
+        #if: github.event.label.name == 'console'
+        if: contains(github.event.pull_request.labels.*.name, 'console')
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
