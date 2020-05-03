@@ -25,3 +25,10 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true
+
+    - name : Django Cov Test
+      uses: actions/checkout@v2
+      uses: actions/python-django-coverage-gitHub-action@v1
+      with:
+        django-app: 'sample_app'
+        minimum-coverage: '86'
